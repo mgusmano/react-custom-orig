@@ -1,5 +1,6 @@
 import React from 'react';
-import { useGlobalState } from '../globalstate/GlobalStateProvider';
+//import { useGlobalState } from '../globalstate/GlobalStateProvider';
+import { useGlobalContext } from '../globalstate/GlobalStateProvider';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +22,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SouthEastSizer = (props) => {
-    const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
+    //const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
+    const GlobalContext = useGlobalContext()
+
     var widgetRecord = props.widgetRecord
 
     const classes = useStyles();
@@ -43,7 +46,8 @@ const SouthEastSizer = (props) => {
       }            
       function stopDrag(e) {
         console.log('here')
-        dispatch({type: 'RESIZE_WIDGET', payload: {id: widgetRecord.id, w: par.style.width, h: par.style.height}});
+        GlobalContext.resizeWidget({id: widgetRecord.id, w: par.style.width, h: par.style.height});
+       // dispatch({type: 'RESIZE_WIDGET', payload: {id: widgetRecord.id, w: par.style.width, h: par.style.height}});
         document.documentElement.removeEventListener('mousemove', doDrag, false);    
         document.documentElement.removeEventListener('mouseup', stopDrag, false);
       }

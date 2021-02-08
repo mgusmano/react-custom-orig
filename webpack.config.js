@@ -38,7 +38,7 @@ module.exports = {
     inline: true,
     contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
-    port: 8080,
+    port: 8081,
     //host: 'localhost'
     // proxy: [{
     //   context: ['/auth', '/api'],

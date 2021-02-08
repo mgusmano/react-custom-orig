@@ -1,7 +1,9 @@
 import produce from 'immer'
+import { RESIZE_WIDGET } from './GlobalStateTypes';
 
 export const GlobalStateReducer = (state, action) => {
   const { payload } = action;
+  console.log(action.type)
   switch (action.type) {
     case 'dashboardData':
       return { ...state, dashboardData: payload }
@@ -87,7 +89,7 @@ export const GlobalStateReducer = (state, action) => {
           draft.widgetData[index].properties.position = {x: payload.x,y: payload.y}
         }
       })
-    case "RESIZE_WIDGET":
+    case RESIZE_WIDGET:
       //console.log("RESIZE_WIDGET",payload.id)
       return produce(state, draft => {
         var index = draft.widgetData.map(item => item.id).indexOf(payload.id);

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useGlobalState } from './globalstate/GlobalStateProvider';
+//import { useGlobalState } from './globalstate/GlobalStateProvider';
+import { useGlobalContext } from './globalstate/GlobalStateProvider'
 
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
@@ -19,7 +20,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Divider from '@material-ui/core/Divider';
 
 const Tools = (props) => {
-  const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
+  //const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
+  const GlobalContext = useGlobalContext();
   const [anchorEl, setAnchorEl] = React.useState(null);
   var widgetRecord = props.widgetRecord
 
@@ -31,8 +33,8 @@ const Tools = (props) => {
     setAnchorEl(null);
     if (who == 'closewidget') {
       console.log('close it')
-      //dispatch({type: 'DELETE_WIDGET', payload: { id: 9 }});
-      dispatch({type: 'DELETE_WIDGET', payload: { id: widgetRecord.id }});
+      GlobalContext.deleteWidget({type: 'DELETE_WIDGET', payload: { id: widgetRecord.id }});
+      //dispatch({type: 'DELETE_WIDGET', payload: { id: widgetRecord.id }});
     }
   };
 

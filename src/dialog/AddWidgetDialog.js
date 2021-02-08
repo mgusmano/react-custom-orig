@@ -1,5 +1,6 @@
 import React from 'react';
-import { useGlobalState } from '../globalstate/GlobalStateProvider';
+//import { useGlobalState } from '../globalstate/GlobalStateProvider';
+import { useGlobalContext } from '../globalstate/GlobalStateProvider';
 import { Button, Dialog, DialogActions, DialogTitle, DialogContent } from "@material-ui/core";
 //import TextField from '@material-ui/core/TextField';
 //import Typography from '@material-ui/core/Typography';
@@ -13,10 +14,12 @@ import GridOnIcon from '@material-ui/icons/GridOn';
 
 const AddWidgetDialog = (props) => {
     const {open, onExited, hideModal} = props
-    const [{}, dispatch] = useGlobalState();
+    //const [{}, dispatch] = useGlobalState();
+    const GlobalContext = useGlobalContext();
 
     const handleClick = (event, title, who) => {
-      dispatch({type: 'ADD_WIDGET', payload: {x: 0, y: 0, w: 400, h: 400, title: title, mode: 'chart', type: who}});
+      GlobalContext.addWidget({type: 'ADD_WIDGET', payload: {x: 0, y: 0, w: 400, h: 400, title: title, mode: 'chart', type: who}});
+      //dispatch({type: 'ADD_WIDGET', payload: {x: 0, y: 0, w: 400, h: 400, title: title, mode: 'chart', type: who}});
       hideModal()
     }
 

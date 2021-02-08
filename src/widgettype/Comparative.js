@@ -9,7 +9,7 @@ import Grid from './demo/Grid'
 
 const Comparative = (props) => {
     var widgetRecord = props.widgetRecord
-    const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
+    //const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
 
     const renderSign = (value) => (
         <span style={{ color: value > 0 ? 'green' : value < 0 ? 'red' : ''}}>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useGlobalState } from './globalstate/GlobalStateProvider';
+//import { useGlobalState } from './globalstate/GlobalStateProvider';
+import { useGlobalContext } from './globalstate/GlobalStateProvider';
 import { useModal } from "react-modal-hook";
 
 import TestDialog from './dialog/TestDialog'
@@ -16,7 +17,8 @@ import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
 import Grid from '@material-ui/core/Grid';
 
 const Toolbar = (props) => {
-    const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
+    //const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
+    const GlobalContext = useGlobalContext();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const [showModalAddWidget, hideModalAddWidget] = useModal(({ in: open, onExited }) => (
@@ -28,7 +30,8 @@ const Toolbar = (props) => {
     ));
 
     const onTileClick = (e) => {
-      dispatch({type: 'TILE_WIDGETS', payload: {}});
+      //dispatch({type: 'TILE_WIDGETS', payload: {}});
+      GlobalContext.tileWidgets({type: 'TILE_WIDGETS', payload: {}});
     };
 
     const handleClick = (event) => {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useGlobalState } from './globalstate/GlobalStateProvider';
+//import { useGlobalState } from './globalstate/GlobalStateProvider';
+import { useGlobalContext } from './globalstate/GlobalStateProvider'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -35,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Toolkit = (props) => {
-    const [{userName,toolkitTitle,dashboardData,widgetData}, dispatch] = useGlobalState();
+    //const [{userName,toolkitTitle,dashboardData,widgetData}, dispatch] = useGlobalState();
+    const GlobalContext = useGlobalContext();
     const classes = useStyles();
 
     const [age, setAge] = React.useState('');
@@ -53,7 +55,7 @@ const Toolkit = (props) => {
             expandIcon={<ExpandMoreIcon style={{color:'#424242'}}/>}
           >
             <GridOnIcon style={{fontSize:'12',padding:'3'}}/>
-            <Typography className={classes.heading}>{toolkitTitle}</Typography>
+            <Typography className={classes.heading}>{GlobalContext.toolkitTitle}</Typography>
           </AccordionSummary>
           <AccordionDetails style={{height:'100px',background:'lightgray'}}>
             <FormControl className={classes.formControl}>

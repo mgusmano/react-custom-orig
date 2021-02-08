@@ -7,13 +7,15 @@ import Grid from './widgettype/demo/Grid'
 import RatingMeter from './widgettype/demo/RatingMeter'
 
 import Tools from './Tools'
-import { useGlobalState } from './globalstate/GlobalStateProvider';
+//import { useGlobalState } from './globalstate/GlobalStateProvider';
+import { useGlobalContext } from './globalstate/GlobalStateProvider';
 import SouthEastSizer from './layout/SouthEastSizer'
 import './Widget.css'
 
 const Widget = (props) => {
   var widgetRecord = props.widgetRecord
-  const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
+  //const [{userName,dashboardData,widgetData}, dispatch] = useGlobalState();
+  const GlobalContext = useGlobalContext();
 
   var style = {
    left: widgetRecord.properties.position.x,
@@ -75,7 +77,11 @@ const Widget = (props) => {
       par.style.height = startHeight
     }            
     function stopDrag(e) {
-      dispatch({type: 'RESIZE_WIDGET', payload: {id: widgetRecord.id, w: par.style.width, h: par.style.height}});
+      GlobalContext.resizeWidget({id: widgetRecord.id, w: par.style.width, h: par.style.height});
+      //GlobalContext.resizeWidget({type: 'RESIZE_WIDGET', payload: {id: widgetRecord.id, w: par.style.width, h: par.style.height}});
+      //dispatch({type: 'RESIZE_WIDGET', payload: {id: widgetRecord.id, w: par.style.width, h: par.style.height}});
+
+
       document.documentElement.removeEventListener('mousemove', doDrag, false);    
       document.documentElement.removeEventListener('mouseup', stopDrag, false);
     }
@@ -104,7 +110,9 @@ const Widget = (props) => {
 
   const onClick = (e, display) => {
     //e.stopPropagation();
-    dispatch({type: 'ACTIVATE_WIDGET', payload: {id: widgetRecord.id}});
+    //dispatch({type: 'ACTIVATE_WIDGET', payload: {id: widgetRecord.id}});
+    //GlobalContext.activateWidget({type: 'ACTIVATE_WIDGET', payload: {id: widgetRecord.id}});
+    GlobalContext.activateWidget({id: widgetRecord.id});
   };
 
   return (
