@@ -9,7 +9,7 @@ import './SenchaGrid.css'
 import App from './App'
 
 const wrapper = document.getElementById("root");
-wrapper ? 
+wrapper ?
 ReactDOM.render(
   <GlobalStateProvider>
     <DndProvider backend={HTML5Backend}>
@@ -17,7 +17,8 @@ ReactDOM.render(
         <App/>
       </ModalProvider>
     </DndProvider>
-  </GlobalStateProvider>, 
+  </GlobalStateProvider>,
+
   wrapper
 ) : false;
 

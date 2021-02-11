@@ -1,5 +1,6 @@
 import React from 'react';
-import { useGlobalState } from '../globalstate/GlobalStateProvider';
+//import { useGlobalState } from '../globalstate/GlobalStateProvider';
+import { useGlobalContext } from '../globalstate/GlobalStateProvider';
 import { Button, Dialog, DialogActions, DialogTitle, DialogContent } from "@material-ui/core";
 //import TextField from '@material-ui/core/TextField';
 //import Typography from '@material-ui/core/Typography';
@@ -12,32 +13,32 @@ import './AddWidgetDialog.css'
 import GridOnIcon from '@material-ui/icons/GridOn';
 
 const AddWidgetDialog = (props) => {
-    const {open, onExited, hideModal} = props
-    const [{}, dispatch] = useGlobalState();
+  const GlobalContext = useGlobalContext();
+  const {open, onExited, hideModal} = props
 
-    const handleClick = (event, title, who) => {
-      dispatch({type: 'ADD_WIDGET', payload: {x: 0, y: 0, w: 400, h: 400, title: title, mode: 'chart', type: who}});
-      hideModal()
-    }
+  const handleClick = (event, title, who) => {
+    GlobalContext.addWidget({type: 'ADD_WIDGET', payload: {x: 0, y: 0, w: 400, h: 400, title: title, mode: 'chart', type: who}});
+    hideModal()
+  }
 
-    const PaperComponent = (props) => {
-        return (
-          <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
-            <Paper {...props} />
-          </Draggable>
-        );
-      }
+  const PaperComponent = (props) => {
+    return (
+      <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
+        <Paper {...props} />
+      </Draggable>
+    );
+  }
 
 //console.log(sprite)
 
 //// <svg className="">
 //<use href={sprite + "#bell"}/>
-//</svg> 
+//</svg>
 //        <Icon name='comparative'/>
 //<div className="icon widget-comparative"></div>
 
     return (
-      <Dialog 
+      <Dialog
         open={open}
         onExited={onExited}
         onClose={hideModal}
@@ -45,9 +46,9 @@ const AddWidgetDialog = (props) => {
 
       >
         <DialogTitle style={{width:'700px',cursor: 'move'}} id="draggable-dialog-title">Add Widget</DialogTitle>
-          <DialogContent style={{width:'700px'}} dividers>      
+          <DialogContent style={{width:'700px'}} dividers>
             <div className="add-widgets-dialog" style={{display:'flex',flexDirection:'row',flexWrap:'wrap'}}>
-             
+
               <span>Data</span>
               <div className="add-widgets-cell" onClick={(event) => handleClick(event, 'comparative', 'comparative')}>
                 <span className="widget-type-name"><GridOnIcon/>comparative</span>
@@ -72,7 +73,7 @@ const AddWidgetDialog = (props) => {
               <div className="add-widgets-cell"></div>
               <div className="add-widgets-cell"></div>
               <div className="add-widgets-cell"></div>
-        
+
               <span>Content</span>
               <div className="add-widgets-cell"></div>
               <div className="add-widgets-cell"></div>

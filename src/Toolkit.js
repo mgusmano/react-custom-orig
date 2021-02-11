@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGlobalState } from './globalstate/GlobalStateProvider';
+//import { useGlobalState } from './globalstate/GlobalStateProvider';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -35,9 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Toolkit = (props) => {
-    const [{userName,toolkitTitle,dashboardData,widgetData}, dispatch] = useGlobalState();
     const classes = useStyles();
-
     const [age, setAge] = React.useState('');
 
     const handleChange = (event) => {
@@ -53,7 +51,7 @@ const Toolkit = (props) => {
             expandIcon={<ExpandMoreIcon style={{color:'#424242'}}/>}
           >
             <GridOnIcon style={{fontSize:'12',padding:'3'}}/>
-            <Typography className={classes.heading}>{toolkitTitle}</Typography>
+            {/* <Typography className={classes.heading}>{toolkitTitle}</Typography> */}
           </AccordionSummary>
           <AccordionDetails style={{height:'100px',background:'lightgray'}}>
             <FormControl className={classes.formControl}>
@@ -90,7 +88,7 @@ const Toolkit = (props) => {
 
         <Accordion>
           <AccordionSummary
-             style={{background:'black',color:'white',borderBottom:'1px solid #424242'}}
+            style={{background:'black',color:'white',borderBottom:'1px solid #424242'}}
             expandIcon={<ExpandMoreIcon style={{color:'#424242'}}/>}
           >
             <GridOnIcon style={{fontSize:'12',padding:'3'}}/>
@@ -106,7 +104,7 @@ const Toolkit = (props) => {
 
         <Accordion>
           <AccordionSummary
-             style={{background:'black',color:'white',borderBottom:'1px solid #424242'}}
+            style={{background:'black',color:'white',borderBottom:'1px solid #424242'}}
             expandIcon={<ExpandMoreIcon style={{color:'#424242'}}/>}
           >
             <GridOnIcon style={{fontSize:'12',padding:'3'}}/>
@@ -122,7 +120,7 @@ const Toolkit = (props) => {
 
         <Accordion>
           <AccordionSummary
-             style={{background:'black',color:'white',borderBottom:'1px solid #424242'}}
+            style={{background:'black',color:'white',borderBottom:'1px solid #424242'}}
             expandIcon={<ExpandMoreIcon style={{color:'#424242'}}/>}
           >
             <GridOnIcon style={{fontSize:'12',padding:'3'}}/>
@@ -138,7 +136,7 @@ const Toolkit = (props) => {
 
         <Accordion>
           <AccordionSummary
-             style={{background:'black',color:'white',borderBottom:'1px solid #424242'}}
+            style={{background:'black',color:'white',borderBottom:'1px solid #424242'}}
             expandIcon={<ExpandMoreIcon style={{color:'#424242'}}/>}
           >
             <GridOnIcon style={{fontSize:'12',padding:'3'}}/>

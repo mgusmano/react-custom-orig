@@ -1,8 +1,14 @@
 import produce from 'immer'
+import { RESIZE_WIDGET } from './GlobalStateTypes';
 
 export const GlobalStateReducer = (state, action) => {
   const { payload } = action;
+  console.log(action.type)
   switch (action.type) {
+    case 'userName':
+      return produce(state,(draft) => {
+        draft.userName = payload
+      })
     case 'dashboardData':
       return { ...state, dashboardData: payload }
     case 'widgetData':
@@ -10,10 +16,6 @@ export const GlobalStateReducer = (state, action) => {
     case 'appTitle':
       return produce(state,(draft) => {
         draft.dashboardData.appTitle = payload
-      })
-    case 'userName':
-      return produce(state,(draft) => {
-        draft.userName = payload
       })
     case "ADD_WIDGET":
       return produce(state, draft => {
@@ -43,13 +45,13 @@ export const GlobalStateReducer = (state, action) => {
           var left = 20
           var width = newWidth - 40
 
-          draft.widgetData.forEach(widget => {   
+          draft.widgetData.forEach(widget => {
             var index = draft.widgetData.map(item => item.id).indexOf(widget.id);
             if (index !== -1) {
               draft.widgetData[index].properties.position =  {x:left,y: 20}
               draft.widgetData[index].properties.size = {width: width,height: h}
               left = width + left + 30
-            } 
+            }
           })
         })
     case "CHANGE_WIDGET_MODE":
@@ -87,7 +89,7 @@ export const GlobalStateReducer = (state, action) => {
           draft.widgetData[index].properties.position = {x: payload.x,y: payload.y}
         }
       })
-    case "RESIZE_WIDGET":
+    case RESIZE_WIDGET:
       //console.log("RESIZE_WIDGET",payload.id)
       return produce(state, draft => {
         var index = draft.widgetData.map(item => item.id).indexOf(payload.id);

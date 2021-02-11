@@ -10,9 +10,6 @@ export const WidgetStateProvider = (props) => {
     //useGlobalState: props.useGlobalState
   }
 
-  //console.log(props.useGlobalState)
- // [{userName,dashboardData}, dispatch] = props.useGlobalState();
-
   return (
     <WidgetStateContext.Provider value={ useReducer(WidgetStateReducer, initialWidgetState) }>
       {props.children}
