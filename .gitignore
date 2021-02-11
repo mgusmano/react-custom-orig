@@ -4,4 +4,4 @@ package-lock.json
 *.tgz
 *.zip
 zzhtml
-app.bundle.js
+**/dist
