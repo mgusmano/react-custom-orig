@@ -1,0 +1,7 @@
+{
+    "jshint.options": {
+        "asi": true,
+        "esversion": 9
+    },
+
+}

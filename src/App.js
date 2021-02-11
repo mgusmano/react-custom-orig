@@ -1,6 +1,7 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { hot } from 'react-hot-loader/root'
+//import axios from "axios";
 import Horizontal from './layout/Horizontal'
 import Vertical from './layout/Vertical'
 import Splitter from './layout/Splitter'
@@ -12,8 +13,30 @@ import Logo from './Logo'
 
 import Absolute from './absolute/Absolute';
 
+import { useGlobalContext } from './globalstate/GlobalStateProvider'
+
 const App = () => {
   //const GlobalContext = useGlobalContext();
+
+  //{GlobalContext.widgetData.length ?
+
+  console.log(GlobalContext.widgetData)
+
+  // return (
+  //   <div>
+  //   {GlobalContext.widgetData !== null
+  //   ? GlobalContext.widgetData.map((widget,index) => {
+  //       return (
+  //         <div key={index}>
+  //           <div style={{textAlign:'center',fontSize:'11px'}}>Welcome {GlobalContext.userName}</div>
+  //           {widget.title}
+  //         </div>
+  //       )
+  //     })
+  //   : <div>wait</div>
+  //   }
+  //   </div>
+  // )
 
   return (
       <Vertical>
@@ -57,7 +80,8 @@ const App = () => {
         {/* <Splitter/>
         <div>footer</div> */}
       </Vertical>
-    )
+
+)
 }
 
 export default hot(App)
