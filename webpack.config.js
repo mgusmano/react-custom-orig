@@ -14,14 +14,14 @@ module.exports = {
   devtool: 'inline-source-map',
   plugins: [
     //new HtmlWebPackPlugin()
-    // new HtmlWebPackPlugin({
-    //   alwaysWriteToDisk: true,
-    //   template: "./src/index.html",
-    //   filename: "../../../aar.html"
-    //   //template: "./src/SDMR.aspx",
-    //   //filename: "../../../SDMR.aspx"
-
-    // })
+    new HtmlWebPackPlugin({
+      alwaysWriteToDisk: true,
+      template: "./src/index.html",
+      filename: "../dist/index.html"
+      //filename: "../../../aar.html"
+      //template: "./src/SDMR.aspx",
+      //filename: "../../../SDMR.aspx"
+    })
     // new HtmlWebPackPlugin({
     //   template: "./src/index.html",
     //   //filename: "../../aar.html"
@@ -29,7 +29,8 @@ module.exports = {
     // })
   ],
   devServer: {
-    index: 'SDMR.aspx',
+    //index: 'SDMR.aspx',
+    index: 'index.html',
     writeToDisk: true,
     //serveIndex: true,
    // contentBase: [path.join(__dirname, 'src'), path.join(__dirname, 'assets')]
@@ -82,9 +83,9 @@ module.exports = {
   },
   module: {
     rules: [
-      {  
-        test: /\.svg$/,  
-        loader: 'svg-sprite-loader'  
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader'
       },
       {
         test: /\.(ttf|eot|woff|woff2|png|jpe?g|gif)$/i,

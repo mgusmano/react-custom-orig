@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>How to set up React, Webpack, and Babel</title>
+<html xmlns="http://www.w3.org/1999/xhtml" style="height:100%;margin:0;display:flex;overflow:hidden;">
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=10.0, user-scalable=yes, shrink-to-fit=no" />
+
+    <base target="_blank" />
+    <title>React, Webpack, and Babel</title>
+    <link rel="stylesheet" href="xhttps://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="location icon" href="images/favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="icon" href="images/favicon.ico" type="image/vnd.microsoft.icon" />
+
 </head>
-<body>
-<div id="root"></div>
+<body style="height:100%;flex:1;display:flex;margin:0;">
+    <form id="frmMain" runat="server">
+        <div style="display: none">
+            <asp:LinkButton ID="btnLogout" runat="server" OnClick="LogoutBtn_Click" CssClass="logoutLink">Logout</asp:LinkButton>
+        </div>
+        <div id="hiddenChartPool" runat="server" style="display: none;"></div>
+        <input type="hidden" runat="server" id="loadAlert"/>
+        <input type="hidden" runat="server" id="DisableGrippersInput" />
+    </form>
+    <div id="initialLoadMask" class="x-mask x-border-box x-mask-fixed">
+        <div style="float: right; right: 50%; position: relative; margin-top: 25%; margin-bottom: 25%">
+            <div id="initialLoadMaskSpinnerBox" class="x-mask-msg" style="float: right; right: -50%; position: relative;">
+                <div class="x-mask-msg-inner">
+                    <div class="x-mask-msg-text" style="font-size:36px;margin:0 0 0 300px;color:white;">
+                      Loading...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-flex-splitter-vertical style="height: 100vh; width: 100%; margin: 0;" id="root"></div>
+
 </body>
 </html>

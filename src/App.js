@@ -13,14 +13,14 @@ import Logo from './Logo'
 
 import Absolute from './absolute/Absolute';
 
-import { useGlobalContext } from './globalstate/GlobalStateProvider'
+//import { useGlobalContext } from './globalstate/GlobalStateProvider'
 
 const App = () => {
   //const GlobalContext = useGlobalContext();
 
   //{GlobalContext.widgetData.length ?
 
-  console.log(GlobalContext.widgetData)
+  //console.log(GlobalContext.widgetData)
 
   // return (
   //   <div>
